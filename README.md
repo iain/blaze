@@ -1,6 +1,8 @@
 # Blaze
 
-TODO: Write a gem description
+[![Build Status](https://secure.travis-ci.org/iain/blaze.png?branch=master)](http://travis-ci.org/iain/blaze)
+
+Just a tiny simple gem which lets you speak on Campfire. No runtime dependencies!
 
 ## Installation
 
@@ -18,7 +20,41 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Configure blaze:
+
+``` ruby
+require 'blaze'
+
+Blaze.configure do |config|
+  config.account = "your-subdomain"
+  config.room_id = 12345
+  config.token   = "abcd"
+  config.ssl     = true
+end
+```
+
+And speak:
+
+``` ruby
+Blaze.speak "hello there!"
+```
+
+## Coming up in v1.0
+
+A way to allow you to spam more rooms in one Ruby process.
+
+This would probably look something like:
+
+``` ruby
+client = Blaze::Client.new do |client|
+  client.account = "your-subdomain"
+  client.room_id = 12345
+  client.token   = "abcd"
+  client.ssl     = true
+end
+
+client.speak "Hello"
+```
 
 ## Contributing
 
